@@ -24,6 +24,16 @@ app.get("/users", (req, res) => {
   res.send("Welcome to users!");
 });
 
+app.use((req, res, next) => {
+  res.send("Page not Found!");
+  next();
+});
+
+app.use((err, req, res, next) => {
+  res.send(err);
+  next();
+});
+
 app.listen(4000, () => {
   console.log("server listening on port 3000");
 });
